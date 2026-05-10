@@ -1,0 +1,12 @@
+{
+  "name": "do-tam-cs",
+  "version": "1.0.0",
+  "description": "This is a simple case study for TAM interview at Digital Ocean",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}

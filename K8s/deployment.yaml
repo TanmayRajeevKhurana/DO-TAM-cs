@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tech-intro-page
+  namespace: webapp
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tech-intro-page
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: tech-intro-page
+    spec:
+      containers:
+      - name: tech-intro-page
+        image: registry.digitalocean.com/<YOUR-REGISTRY>/myapp:1.0
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 3000
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "200m"
+            memory: "256Mi"
+        readinessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        livenessProbe:
+          httpGet:
+            path: /health
+            port: 3000
+          initialDelaySeconds: 10
+          periodSeconds: 20
+          failureThreshold: 3

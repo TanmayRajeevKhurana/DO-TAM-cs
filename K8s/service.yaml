@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: tech-intro-service
+  namespace: webapp
+spec:
+  type: LoadBalancer
+  selector:
+    app: tech-intro-page
+  ports:
+  - name: http
+    protocol: TCP
+    port: 80
+    targetPort: 3000
