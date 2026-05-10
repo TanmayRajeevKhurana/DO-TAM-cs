@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
       - name: tech-intro-page
-        image: registry.digitalocean.com/<YOUR-REGISTRY>/myapp:1.0
+        image: registry.digitalocean.com/my-do-tam-registry/myapp:1.0
         imagePullPolicy: Always
         ports:
         - containerPort: 3000
